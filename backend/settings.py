@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from datetime import datetime
+from datetime import timedelta
 from dotenv import load_dotenv
 import os
 
@@ -19,7 +19,7 @@ import os
 load_dotenv()
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project like this: BASE_DIR / 'subdirn '.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -58,6 +58,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api',
+    'corsheaders', # CORS stands for Cross-Origin Resource Sharing, a security feature implemented in web browsers that restricts web pages from making requests to a different domain than the one that served the web page.
+
 ]
 
 MIDDLEWARE = [
@@ -68,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -142,3 +147,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Example for local development
+    "https://note.com",
+]
+CORS_ALLOWED_CREDENTIAL = True

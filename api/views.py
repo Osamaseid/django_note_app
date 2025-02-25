@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Note
 # Create your views here.
 
-class NoteListCreate(generics.ListCrate):
+class NoteListCreate(generics.ListCreateAPIView):
     Serializer_class = NoteSerializer
     permission_classes = [IsAuthenticated]
 
